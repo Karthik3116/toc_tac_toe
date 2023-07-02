@@ -1,1 +1,108 @@
+import random
+
+
+def roll():
+        
+    nums = (1,2,3,4,5,6)
+    random_number = random.choice(nums)
+    return (random_number)
+
+
+player_1 = 0
+player_2 = 0
+
+turn = 0
+
+
+
+
+
+snake = {22:20, 16:3, 34:26, 47:35}
+
+ladder = {6:14, 11:29, 17:36, 18:39, 37:43}
+
+
+
+
+while player_1 <= 50 and player_2 <= 50:
+
+
+    given = True
+
+    
+    
+    if turn % 2 == 0:
+        
+        ans = input("\033[32mplayer 1 enter 1 to spin : \033[0m")
+
+        while ans != '1':
+
+            ans = input("\033[32menter 1 to spin die :\033[0m")
+        score = roll()
+
+        if player_1 + score > 50:
+            player_1 += 0
+
+        else:
+            player_1 += score
+
+        if player_1 in snake.keys():
+
+            player_1 = snake[player_1]
+            print("SNAKE BITE")
+
+        if player_1 in ladder.keys():
+
+            player_1 = ladder[player_1]
+
+            print("LUCKY LADDER")
+            
+
+            
+
+        if player_1 == 50:
+            print(f"\033[32mYour die score is {score} and bot is at {player_1}\033[0m")
+            print("PLAYER 1 WON ")
+            break
+
+        print(f"\033[32mYour die score is {score} and bot is at {player_1}\033[0m")
+
+    else:
+
+        ans = input("\033[34mplayer 2 enter 1 to spin : \033[0m")
+
+        while ans != '1':
+
+            ans = input("enter 1 to spin die :\033[0m")
+
+        score = roll()
+
+        if (player_2 + score) > 50:
+            
+            player_2 += 0
+        else:
+            player_2 += score
+
+        if player_2 in snake.keys():
+
+            player_2 = snake[player_2]
+            print("SNAKE BITE")
+
+        if player_2 in ladder.keys():
+
+            player_2 = ladder[player_2]
+            print("LUCKY LADDER")
+
+
+        if player_2 == 50:
+            print(f"\033[34mYour die score is {score} and bot is at {player_2}\033[0m")
+            print("PLAYER 2 WON")
+            break
+        print(f"\033[34mYour die score is {score} and bot is at {player_2}\033[0m")
+
+    turn += 1
+
+
+
+
 
